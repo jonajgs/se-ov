@@ -2,13 +2,6 @@
 <items version="2" >
 
     <item
-        jar="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="8f615bca00639150c9eb6175d4b5471193f70794">
-        <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/classes-e3dd52b12e40775f2b44e9eb1f5b8f4219c88862.jar" />
-    </item>
-    <item
         jar="/Users/jonathan/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
         jumboMode="false"
         revision="23.0.1"
@@ -23,88 +16,11 @@
         <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/classes-259cdd4ea6faa41fd8b1e5a1500392c3b3fd07ae.jar" />
     </item>
     <item
-        jar="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.0.1/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="4356e230a981d1bbf047d848b91bc0d9b7c5bacc">
-        <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/classes-ef95aa4c615f1f8f9c963339c6e2643d80ad986c.jar" />
-    </item>
-    <item
-        jar="/Users/jonathan/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="6975da39a7040257bd51d21a231b76c915872d38">
-        <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/javax.inject-1-8cd5ad2f25ba50a1162daf5c135e9c45f11aead9.jar" />
-    </item>
-    <item
-        jar="/Users/jonathan/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.9.0/f824591a0016efbaeddb8300bee54832a1398cfa/okio-1.9.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="f824591a0016efbaeddb8300bee54832a1398cfa">
-        <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/okio-1.9.0-6c2e4d01825532b0c3a5ae1e4986e7ed034fc538.jar" />
-    </item>
-    <item
-        jar="/Users/jonathan/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp-ws/3.4.1/8ace66ef7002d98f633377c9e67daeeb196d8c3b/okhttp-ws-3.4.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="8ace66ef7002d98f633377c9e67daeeb196d8c3b">
-        <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/okhttp-ws-3.4.1-58c039025c517a60e43e706bedff86fdb2c8b9bd.jar" />
-    </item>
-    <item
-        jar="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/0.11.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="98786c1770b531b9194fb6448b2a2692c64074b6">
-        <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/classes-87ae33604785bc0a3ae045ecbb0a01dd464a1f54.jar" />
-    </item>
-    <item
-        jar="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.36.1/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="3845d20f4d4d7b023fe1b899d9956d3bffd7b47a">
-        <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/classes-c2c22d8cfc247615947a84fad182c9d1b6dffac2.jar" />
-    </item>
-    <item
-        jar="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="3be474b1b21b31cf2fa93fe6bd641ae108d96452">
-        <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/classes-2ba78ca97ded8ff30568bbbb17e9512c932cd9be.jar" />
-    </item>
-    <item
-        jar="/Users/jonathan/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.2.3/1a0113da2cab5f4c216b4e5e7c1dbfaa67087e14/jackson-core-2.2.3.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="1a0113da2cab5f4c216b4e5e7c1dbfaa67087e14">
-        <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/jackson-core-2.2.3-e5d7ea9449745da22e60834333e2f7ad0d5e7ba5.jar" />
-    </item>
-    <item
-        jar="/Users/jonathan/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.4.1/c7c4f9e35c2fd5900da24f9872e3971801f08ce0/okhttp-3.4.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="c7c4f9e35c2fd5900da24f9872e3971801f08ce0">
-        <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/okhttp-3.4.1-f131c1a223ce8e1847301bd1aff3bd965629e449.jar" />
-    </item>
-    <item
         jar="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fresco/0.11.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="d31aadf33187c37a7cd63dc1b769f8c6e33f78c3">
         <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/classes-3e7c5644cc9a6ad0df6da80e6df8946e8145bc15.jar" />
-    </item>
-    <item
-        jar="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/exploded-aar/com.facebook.fresco/drawee/0.11.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="1137942adeb03984c1311b662363dd38fc238fd3">
-        <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/classes-333bf65b1eb255ffeac0c1799950f16eaff23cc8.jar" />
-    </item>
-    <item
-        jar="/Users/jonathan/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.0/5871fb60dc68d67da54a663c3fd636a10a532948/jsr305-3.0.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
-        <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/jsr305-3.0.0-a8c1a844bf0fd501dd576a4350c728c1f8722d9a.jar" />
     </item>
     <item
         jar="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.36.1/jars/libs/infer-annotations-1.5.jar"
@@ -114,32 +30,11 @@
         <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/infer-annotations-1.5-efb7ad20fdaea42a166da038b4a427f219a92249.jar" />
     </item>
     <item
-        jar="/usr/local/Cellar/android-sdk/24.4.1_1/extras/android/m2repository/com/android/support/support-annotations/23.2.1/support-annotations-23.2.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="ccb693bc0774fcb637246f7360de25b4af7df318">
-        <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/support-annotations-23.2.1-be29bbd49f7270cccaeecc1f5df54d90f886d9c7.jar" />
-    </item>
-    <item
         jar="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/jars/libs/internal_impl-23.2.1.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="607a3d0b8013b4ccbfeb0b7cb293351994e021fb">
         <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/internal_impl-23.2.1-9866de4a3bd6e8a9bb7ec059b74addc5745b9c2d.jar" />
-    </item>
-    <item
-        jar="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
-        <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/classes-4aa5e670bf02dc6d073290fdfbb830589d6634c4.jar" />
-    </item>
-    <item
-        jar="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/0.11.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="3341b66c54367e777a0647e2db96c045329bfeab">
-        <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/classes-da72312cc095e381263d97ddba83a6bc6b6166c5.jar" />
     </item>
     <item
         jar="/Users/jonathan/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp-urlconnection/3.4.1/63994437f62bc861bc20c605d12962f7246116d1/okhttp-urlconnection-3.4.1.jar"
@@ -156,11 +51,116 @@
         <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/classes-a88ca364006dcec06b02285a109ad509ae72d662.jar" />
     </item>
     <item
+        jar="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/exploded-aar/com.facebook.fresco/drawee/0.11.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1137942adeb03984c1311b662363dd38fc238fd3">
+        <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/classes-333bf65b1eb255ffeac0c1799950f16eaff23cc8.jar" />
+    </item>
+    <item
+        jar="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
+        <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/classes-4aa5e670bf02dc6d073290fdfbb830589d6634c4.jar" />
+    </item>
+    <item
+        jar="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.36.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3845d20f4d4d7b023fe1b899d9956d3bffd7b47a">
+        <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/classes-c2c22d8cfc247615947a84fad182c9d1b6dffac2.jar" />
+    </item>
+    <item
+        jar="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3be474b1b21b31cf2fa93fe6bd641ae108d96452">
+        <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/classes-2ba78ca97ded8ff30568bbbb17e9512c932cd9be.jar" />
+    </item>
+    <item
+        jar="/Users/jonathan/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="6975da39a7040257bd51d21a231b76c915872d38">
+        <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/javax.inject-1-8cd5ad2f25ba50a1162daf5c135e9c45f11aead9.jar" />
+    </item>
+    <item
+        jar="/Users/jonathan/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.9.0/f824591a0016efbaeddb8300bee54832a1398cfa/okio-1.9.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="f824591a0016efbaeddb8300bee54832a1398cfa">
+        <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/okio-1.9.0-6c2e4d01825532b0c3a5ae1e4986e7ed034fc538.jar" />
+    </item>
+    <item
+        jar="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/0.11.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3341b66c54367e777a0647e2db96c045329bfeab">
+        <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/classes-da72312cc095e381263d97ddba83a6bc6b6166c5.jar" />
+    </item>
+    <item
+        jar="/Users/jonathan/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.4.1/c7c4f9e35c2fd5900da24f9872e3971801f08ce0/okhttp-3.4.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c7c4f9e35c2fd5900da24f9872e3971801f08ce0">
+        <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/okhttp-3.4.1-f131c1a223ce8e1847301bd1aff3bd965629e449.jar" />
+    </item>
+    <item
+        jar="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/0.11.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="98786c1770b531b9194fb6448b2a2692c64074b6">
+        <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/classes-87ae33604785bc0a3ae045ecbb0a01dd464a1f54.jar" />
+    </item>
+    <item
+        jar="/usr/local/Cellar/android-sdk/24.4.1_1/extras/android/m2repository/com/android/support/support-annotations/23.2.1/support-annotations-23.2.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ccb693bc0774fcb637246f7360de25b4af7df318">
+        <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/support-annotations-23.2.1-be29bbd49f7270cccaeecc1f5df54d90f886d9c7.jar" />
+    </item>
+    <item
+        jar="/Users/jonathan/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.2.3/1a0113da2cab5f4c216b4e5e7c1dbfaa67087e14/jackson-core-2.2.3.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1a0113da2cab5f4c216b4e5e7c1dbfaa67087e14">
+        <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/jackson-core-2.2.3-e5d7ea9449745da22e60834333e2f7ad0d5e7ba5.jar" />
+    </item>
+    <item
+        jar="/Users/jonathan/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp-ws/3.4.1/8ace66ef7002d98f633377c9e67daeeb196d8c3b/okhttp-ws-3.4.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8ace66ef7002d98f633377c9e67daeeb196d8c3b">
+        <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/okhttp-ws-3.4.1-58c039025c517a60e43e706bedff86fdb2c8b9bd.jar" />
+    </item>
+    <item
+        jar="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="4356e230a981d1bbf047d848b91bc0d9b7c5bacc">
+        <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/classes-ef95aa4c615f1f8f9c963339c6e2643d80ad986c.jar" />
+    </item>
+    <item
+        jar="/Users/jonathan/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.0/5871fb60dc68d67da54a663c3fd636a10a532948/jsr305-3.0.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
+        <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/jsr305-3.0.0-a8c1a844bf0fd501dd576a4350c728c1f8722d9a.jar" />
+    </item>
+    <item
         jar="/Users/jonathan/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
         <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/library-2.4.0-9238bd4427c1e6ff0ffebbbbdd45f1d494f58635.jar" />
+    </item>
+    <item
+        jar="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8f615bca00639150c9eb6175d4b5471193f70794">
+        <dex dex="/Users/jonathan/Documents/cucei2016B/sbc/se-ov/android/app/build/intermediates/pre-dexed/debug/classes-e3dd52b12e40775f2b44e9eb1f5b8f4219c88862.jar" />
     </item>
 
 </items>

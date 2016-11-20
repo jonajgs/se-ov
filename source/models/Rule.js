@@ -97,7 +97,7 @@ const Rule = Backbone.Model.extend({
             conclutions: this.conclutionParts,
         };
     },
-    condiionTest: memoryWork => {
+    conditionTest: memoryWork => {
         let bs = new BooleanStack();
         let truth1 = false;
         let truth2 = false;
