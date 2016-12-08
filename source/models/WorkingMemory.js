@@ -1,60 +1,78 @@
 import Backbone from 'backbone';
+import Atom from './Atom';
 
 const WorkingMemory = Backbone.Model.extend({
-    initialize: () => {
-        this.affirmed = [];
-        this.denied   = [];
+    defaults: {
+        affirmed: [],
+        denied: [],
     },
-    checkAtom: atom => {
+    initialize: function() {
+
+    },
+    constructor: function() {
+        Backbone.Model.apply(this, arguments);
+    },
+    checkAtom: function(atom) {
         if ( !(atom instanceof Atom) ) {
             return new Atom(atom);
         }
 
         return atom;
     },
-    contains: (array, atom) => {
+    contains: function(array, atom) {
+        let _index = false;
         array.map((value, index) => {
-            if ( value.equals(atom) ) {
-                return index + 1;
+            if ( this.equals(value, atom) ) {
+                _index = index + 1;
             }
         });
 
+        return _index;
+    },
+    equals: function(atom1, atom2) {
+        if(atom2) {
+            return (
+                atom1.get('description') === atom2.get('description') &&
+                atom1.get('state') === atom2.get('state') &&
+                atom1.get('objective') === atom2.get('objective')
+            );
+        }
         return false;
     },
-    saveAtom: atom => {
-        atom = this.checkAtom(atom);
-
-        if ( !this.contains(this.affirmed, atom) && !this.contains(this.denied, atom) ) {
-            if ( atom.get('state') ) {
-                this.affirmed.push(atom);
-            } else {
-                this.denied.push(atom);
-            }
+    saveAtom: function(atom) {
+        if ( atom.get('state') ) {
+            let affirmed = this.get('affirmed');
+            affirmed.push(atom);
+            this.set('affirmed', affirmed);
         } else {
-            throw new DuplicatedAtom(atom).getAtom();
+            let denied = this.get('denied');
+            denied.push(atom);
+            this.set('denied', denied);
         }
     },
-    present: atom => {
-        let atomTemp = new Atom(atom);
-
-        atomTemp.set({ state: !atom.get('state') });
+    present: function(atom) {
+        let atomTemp = new Atom({
+            description: atom.get('description'),
+            state: !atom.get('state'),
+            objective: atom.get('objective'),
+        });
 
         return (
-            this.contains(this.affirmed, atom) ||
-            this.contains(this.denied, atom) ||
-            this.contains(this.affirmed, atomTemp) ||
-            this.contains(this.denied, atomTemp) ||
+            this.contains(this.get('affirmed'), atom) ||
+            this.contains(this.get('denied'), atom) ||
+            this.contains(this.get('affirmed'), atomTemp) ||
+            this.contains(this.get('denied'), atomTemp)
         );
     },
     wasAffirmed: atom => {
-        return this.contains(this.affirmed, atom);
+        return this.contains(this.get('affirmed'), atom);
     },
     wasDenied: atom => {
-        return this.contains(this.denied, atom);
+        return this.contains(this.get('denied'), atom);
     },
     recover: atom => {
-        let affirmed = this.contains(this.affirmed, atom);
-        let denied   = this.contains(this.denied, atom);
+        let affirmed = this.contains(this.get('affirmed'), atom);
+        let denied   = this.contains(this.get('denied'), atom);
 
         if ( affirmed ) {
             return this.affirmed[affirmed - 1];
@@ -68,7 +86,7 @@ const WorkingMemory = Backbone.Model.extend({
     },
     getWorkingMemory: () => {
         return {
-            name: 'Memoria de trabajo';
+            name: 'Memoria de trabajo',
             affirmed: this.affirmed,
             denied: this.denied,
         };

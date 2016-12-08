@@ -12,7 +12,7 @@ const BooleanStack = Backbone.Model.extend({
     },
     top: () => {
         if ( !this.empty() ) {
-            return (Boolean)this.data[this.data.length - 1];
+            return Boolean(this.data[this.data.length - 1]);
         }
 
         return false;
@@ -20,7 +20,7 @@ const BooleanStack = Backbone.Model.extend({
     pop: () => {
         let tmp;
         if ( !this.empty() ) {
-            tmp = (Boolean)this.top();
+            tmp = Boolean(this.top());
             this.data = this.data.slice(0, this.data.length - 1);
             return tmp;
         }

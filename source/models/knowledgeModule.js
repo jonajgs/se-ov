@@ -3,42 +3,62 @@ import RNFS from 'react-native-fs';
 import Rule from './Rule';
 
 const knowledgeModule = Backbone.Model.extend({
-    initialize: (description, file) => {
-        this.description = description;
-        this.loadKnowledgeBase(file);
+    defaults: {
+        description: '',
+        knowledgeBase: [],
     },
-    loadKnowledgeBase: file => {
-        this.knowledgeBase = RNFS.readFile(RNFS.MainBundlePath + state.file, res => res.split(' '));
+    initialize: function(description, file = null){
+        this.set('description', description);
+
+        if(file) {
+            this.loadKnowledgeBase(file);
+        }
+    },
+    constructor: function() {
+        Backbone.Model.apply(this, arguments);
+    },
+    loadKnowledgeBase: function(file) {
+        RNFS.readFile(RNFS.ExternalDirectoryPath + '/' + file)
+            .then(function(result) {
+                return result
+                    .replace(/<\/regla> /g, '</regla>\n')
+                    .split('\n')
+                    .filter(rule => rule.trim() !== '')
+                    .map(rule => new Rule(rule));
+            })
+            .then(result => {
+                this.set('knowledgeBase', result);
+            });
     },
     getKnowledgeModule: () => {
         return {
             name: 'modulo conocimiento',
-            knowledge: this.knowledgeBase;
+            knowledge: this.knowledgeBase,
         };
     },
-    filterObjectives: () => {
-        return this.knowledgeBase.filter(kb => {
-            let rule = new Rule(kb);
+    filterObjectives: function() {
+        let objetives = [];
+
+        this.get('knowledgeBase').filter(rule => {
             if ( rule.isObjective() ) {
-                return true;
+                objetives.push(rule);
             }
         });
+
+        return objetives;
     },
-    unmark: () => {
-        this.knowledgeBase.map(kb => {
-            let rule = new Rule(kb);
-            rule.set({ mark: false });
+    unmark: function() {
+        this.get('knowledgeBase').map(rule => {
+            rule.set('mark', false);
         });
     },
-    removeTriggers: () => {
-        this.knowledgeBase.map(kb => {
-            let rule = new Rule(kb);
+    removeTriggers: function() {
+        this.get('knowledgeBase').map(rule => {
             rule.set({ trigger: false });
         });
     },
-    rulesTriggered: () => {
-        return this.knowledgeBase.filter(kb => {
-            let rule = new Rule(kb);
+    rulesTriggered: function() {
+        return this.get('knowledgeBase').filter(rule => {
             if ( rule.trigger ) {
                 return true;
             }

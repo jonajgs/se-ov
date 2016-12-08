@@ -1,7 +1,7 @@
 import RulePart from './RulePart';
 
 const Atom = RulePart.extend({
-    initialize: ({ description, state, ojective }) => {
+    initialize: ({ description, state, objective }) => {
         this.description = description.toLowerCase();
         this.state       = state&&true;
         this.objective   = objective&&true;

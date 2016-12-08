@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Text, Navigator, TouchableHighlight, View, StatusBar } from 'react-native';
 import { connect } from 'react-redux';
 
+import Home from '../components/home';
+import Question from '../components/question';
+import { init } from '../actions/inferenceMachine';
+
 const navigationBarRouteMapper = {
     LeftButton: (route, navigator, index, navState) => {
         if(route.index === 0) {
@@ -19,7 +23,7 @@ const navigationBarRouteMapper = {
                     marginLeft: 10,
                 }}
             >
-                <Text>Salir</Text>
+                <Text style={{color: '#fff'}}>Salir</Text>
             </TouchableHighlight>
         );
     },
@@ -35,7 +39,7 @@ const navigationBarRouteMapper = {
                     justifyContent: 'center',
                 }}
             >
-                <Text style={{ fontSize: 20 }}>
+                <Text style={{ fontSize: 20, color: '#fff' }}>
                     {route.title}
                 </Text>
             </TouchableHighlight>
@@ -48,13 +52,23 @@ class Navigation extends Component {
         super(props);
 
         this.state = {
-            initialRoute: props.navigation,
+            initialRoute: {
+                title: 'Inicio',
+                index: 0,
+                component: Home,
+            },
         };
         StatusBar.setBarStyle('light-content', true);
         StatusBar.setBackgroundColor('#102345', true);
-
         this.renderScene = this.renderScene.bind(this);
         this.configureScene = this.configureScene.bind(this);
+        props._init();
+    }
+
+    componentWillReceiveProps(next) {
+        next.inferenceMachine.navigator.push({
+            component: Question,
+        });
     }
 
     renderScene(route, navigator) {
@@ -95,7 +109,10 @@ class Navigation extends Component {
 }
 
 export default connect(
-    state => ({
-        navigation: state.navigation,
+    state => state,
+    dispatch => ({
+        _init: () => {
+            dispatch(init());
+        },
     })
 )(Navigation);

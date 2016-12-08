@@ -1,10 +1,17 @@
 import Operator from './Operator';
+import Backbone from 'backbone';
 
 const Binary = Operator.extend({
-    initialize: conjuntion => {
-        this.conjuntion = conjuntion;
+    defaults: {
+        conjuntion: false,
     },
-    getBinary: () => {
+    initialize: function(conjuntion) {
+        this.set('conjuntion', conjuntion);
+    },
+    constructor: function() {
+        Backbone.Model.apply(this, arguments);
+    },
+    getBinary: function() {
         return (this.conjuntion ? '&' : '|');
     },
 });

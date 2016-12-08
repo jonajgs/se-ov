@@ -4,4 +4,4 @@ const Operator = RulePart.extend({
     initialize: () => {},
 });
 
-export default Operador;
+export default Operator;

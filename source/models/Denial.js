@@ -6,11 +6,3 @@ const Denial = Operator.extend({
 });
 
 export default Denial;
-
-public class Negacion:Operador{
-    public Negacion(){
-    }
-    public override string ToString(){
-        return "!";
-    }
-}

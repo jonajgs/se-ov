@@ -2,10 +2,11 @@ import React from 'react';
 import { View, TouchableHighlight, Text } from 'react-native';
 import { connect } from 'react-redux';
 
-import Question from './question';
+import { start } from '../actions/inferenceMachine';
 import { push } from '../actions/navigation';
+import Question from './question';
 
-function homeComponent({ navigator }) {
+function homeComponent({ navigator, _start, _push }) {
     return (
         <View
             style={{
@@ -17,15 +18,20 @@ function homeComponent({ navigator }) {
             <TouchableHighlight
                 underlayColor={'transparent'}
                 onPress={() => {
-                    navigator.push({
-                        component: Question,
-                    });
+                    _start(navigator);
                 }}
             >
-                <Text>Iniciar Test</Text>
+                <Text style={{color: '#fff'}}>Iniciar Test</Text>
             </TouchableHighlight>
         </View>
     );
 };
 
-export default homeComponent
+export default connect(
+    null,
+    dispatch => ({
+        _start: (nav) => {
+            dispatch(start(nav));
+        },
+    })
+)(homeComponent)

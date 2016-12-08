@@ -5,15 +5,20 @@ import Denial from './Denial';
 import Binary from './Binary';
 
 const Rule = Backbone.Model.extend({
-    initialize: rule => {
-        this.mark = false;
-        this.trigger = false;
-        this.objective = false;
-        this.conditionParts = [];
-        this.conclutionParts = [];
+    defaults: {
+        mark: false,
+        trigger: false,
+        objective: false,
+        conditionParts: [],
+        conclutionParts: [],
+    },
+    initialize: function(rule) {
         this.analize(rule);
     },
-    analize: rule => {
+    constructor: function(rule) {
+        Backbone.Model.apply(this, arguments);
+    },
+    analize: function(rule) {
         let parts = rule.split(' ');
         let r = false;
         let condition = false;
@@ -33,8 +38,9 @@ const Rule = Backbone.Model.extend({
                     objective = false;
                     break;
                 case "<atomoObj>":
-                    atom      =true;
-                    objective =true;
+                    atom      = true;
+                    objective = true;
+                    this.set('objective', true);
                     break;
                 case "</atomoObj>":
                     atom      = false;
@@ -47,43 +53,68 @@ const Rule = Backbone.Model.extend({
                     condition = false;
                     break;
                 case "<conclusion>":
-                    conclusion = true;
+                    conclution = true;
                     break;
                 case "</conclusion>":
-                    conclusion = false;
+                    conclution = false;
                     break;
                 case "<negacion/>":
                     partRule = new Denial();
-                    if ( condition&&!conclusion ) {
-                        this.conditionParts.push(partRule);
+
+                    if ( condition&&!conclution ) {
+                        this.set(
+                            'conditionParts',
+                            this.get('conditionParts').concat([new Denial()])
+                        );
                     }
-                    if ( conclusion&&!condition ) {
-                        this.conclutionParts.push(partRule);
+                    if ( conclution&&!condition ) {
+                        this.set(
+                            'conclutionParts',
+                            this.get('conclutionParts').concat([new Denial()])
+                        );
                     }
                     break;
                 case "<conjuncion/>":
                     partRule = new Binary(true);
-                    if ( condition&&!conclusion ) {
-                        this.conditionParts.push(partRule);
+
+                    if ( condition&&!conclution ) {
+                        this.set(
+                            'conditionParts',
+                            this.get('conditionParts').concat([new Binary(true)])
+                        );
                     }
-                    if ( conclusion&&!condition ) {
-                        this.conclutionParts.push(partRule);
+                    if ( conclution&&!condition ) {
+                        this.set(
+                            'conclutionParts',
+                            this.get('conclutionParts').concat([new Binary(true)])
+                        );
                     }
                     break;
                 case "<disyuncion/>":
                     partRule = new Binary(false);
-                    if ( condition&&!conclusion ) {
-                        this.conditionParts.push(partRule);
+
+                    if ( condition&&!conclution ) {
+                        this.set(
+                            'conditionParts',
+                            this.get('conditionParts').concat([new Binary(false)])
+                        );
                     }
                     break;
                 default:
                     if ( atom ){
-                        parte = new Atom({ part, state: true, objective });
-                        if ( condition&&!conclusi&&!objective ) {
-                            this.conditionParts.push(partRule);
+                        partRule = new Atom({ description: part, state: true, objective });
+
+                        if ( condition&&!conclution&&!objective ) {
+                            this.set(
+                                'conditionParts',
+                                this.get('conditionParts').concat([partRule])
+                            );
                         }
                         if ( conclution&&!condition ) {
-                            this.conclutionParts.push(partRule);
+                            this.set(
+                                'conclutionParts',
+                                this.get('conclutionParts').concat([partRule])
+                            );
                         }
                     }
                     break;
@@ -131,11 +162,10 @@ const Rule = Backbone.Model.extend({
             return bs.pop();
         });
     },
-    trigger: memoryWork => {
+    triggered: memoryWork => {
         let atomTemp;
         let comeObjective = false;
         let atoms = [];
-
         this.trigger = true;
 
         this.conditionParts.map(cp => {
@@ -151,17 +181,17 @@ const Rule = Backbone.Model.extend({
         });
 
         atoms.map(atom => {
-            try {
+            //try {
                 memoryWork.saveAtom(atom);
-            } catch ( DuplicatedAtom da ) {
-                return da.getAtom();
-            }
+            //} catch ( DuplicatedAtom da ) {
+            //    return da.getAtom();
+            //}
         });
 
         return comeObjective;
     },
-    isObjective: () => {
-        return this.objective;
+    isObjective: function() {
+        return this.get('objective');
     },
 });
 

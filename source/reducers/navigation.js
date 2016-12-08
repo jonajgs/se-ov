@@ -1,15 +1,20 @@
 import Home from '../components/home';
-import { PUSH, POP, GO_TO_INDEX } from '../actions/navigation';
+import {
+    PUSH,
+} from '../actions/navigation';
 
-const initialState = {
-    title: 'Inicio',
-    index: 0,
+const stateDefault = {
     component: Home,
 };
 
-export default function(state = initialState, action) {
-    switch (action.type) {
+export default function navigationReducer(state = stateDefault, action) {
+    switch(action.type) {
+        case PUSH:
+            return {
+                ...state,
+                component: action.component,
+            };
         default:
-            return initialState;
+            return state;
     }
-}
+};

@@ -1,29 +1,119 @@
 import Backbone from 'backbone';
+import KnowledgeModule from './KnowledgeModule';
+import Denial from './Denial';
+import Rule from './Rule';
+import Atom from './Atom';
 
-const InferenceMachine = Backone.Model.extend({
-    backward: false,
+const InferenceMachine = Backbone.Model.extend({
+    defaults: {
+        backward: false,
+        knowledgeModuleTemp: null,
+    },
+    initialize: function(knowledgeModule, workingMemory) {
+        // stuff
+        this.build(knowledgeModule, workingMemory);
+    },
+    constructor: function() {
+        Backbone.Model.apply(this, arguments);
+    },
+    build: function(knowledgeModule, workingMemory) {
+        let objetiveRules = knowledgeModule.filterObjectives();
 
-    // encadenarAdelante
-    chainForward: (knowledgeModule, workingMemory) => {
+        let toSatisfy = [];
+        let knowledgeBasePremium = [];
+        let result;
+        let knowledgeBasePremiumName;
+        let exit = false;
+        let position = -1;
+        let times = 0;
+        let total = objetiveRules.length;
+        this.backward = true;
+        let knowledgeModuleTemp;
+
+        position = Math.floor((Math.random() * total));
+
+        knowledgeModule.unmark();
+        knowledgeModule.removeTriggers();
+
+        objetiveRules[position].get('conclutionParts').map(conclution => {
+            if ( conclution instanceof Atom ) {
+                if ( conclution.get('objective') ) {
+                    knowledgeBasePremiumName = conclution.get('description').toUpperCase();
+                }
+            }
+        });
+
+        knowledgeModuleTemp = new KnowledgeModule(knowledgeBasePremiumName);
+        this.concat(toSatisfy, objetiveRules[position].get('conclutionParts'));
+        do {
+            exit = true;
+            knowledgeModule.get('knowledgeBase').map(atomRule => {
+                if ( !atomRule.get('mark') && this.isEligible(atomRule, toSatisfy) ) {
+                    exit = false;
+                    atomRule.set('mark', true);
+                    this.concat(toSatisfy, atomRule.get('conditionParts'));
+                    knowledgeBasePremium.unshift(atomRule);
+                }
+            });
+        } while ( !exit );
+        knowledgeModuleTemp.set('knowledgeBase', knowledgeBasePremium);
+        console.log('Intentando con ', knowledgeModuleTemp.get('description'));
+        this.set('knowledgeModuleTemp', knowledgeModuleTemp);
+        // aqui pedire la pregunta
+        //result = this.chainForward(knowledgeModuleTemp, workingMemory);
+    },
+    equals: function(atom1, atom2) {
+        if(atom2) {
+            return (
+                atom1.get('description') === atom2.get('description') &&
+                atom1.get('state') === atom2.get('state') &&
+                atom1.get('objective') === atom2.get('objective')
+            );
+        }
+        return false;
+    },
+    nextQuestion: function(_state, knowledgeModule, workingMemory, _knowledgeModuleTemp = null, action = {}) {
+        let knowledgeModuleTemp;
+
+        if(!_knowledgeModuleTemp) {
+            knowledgeModuleTemp = this.get('knowledgeModuleTemp');
+        } else {
+            knowledgeModuleTemp = _knowledgeModuleTemp;
+        }
+
+        if(action && action.answer) {
+            let state = (action.answer === 'yes') ? true : false;
+            _state.question.set('state', state);
+            workingMemory.saveAtom(_state.question);
+        }
+
+        let atomQuestion = knowledgeModuleTemp.get('knowledgeBase')[_state.index].get('conditionParts').find(atom => {
+            return atom instanceof Atom && !workingMemory.present(atom);
+        });
+
+
+        return atomQuestion;
+    },
+    chainForward: function(knowledgeModule, workingMemory) {
+        console.log('CHAIN FORWARD', knowledgeModule);
         let atomRule;
         let atom;
         let consultResult = false;
         let conditionResult = false;
 
-        knowledgeModule.knowledgeBase.map(element => {
-            atomRule = new Rule(element);
-            element.conditionParts.map(condition => {
+        knowledgeModule.get('knowledgeBase').map(atomRule => {
+            atomRule.get('conditionParts').map(condition => {
                 if ( condition instanceof Atom ) {
-                    atom = new Atom(atom);
+                    atom = condition;
+                    console.log('aqui');
                     if ( !workingMemory.present(atom) ) {
-                        consultResult = consultPerAtom(atom, atomRule);
                         atom.set('state', consultResult);
 
-                        try {
-                            workingMemory.saveAtom(new Atom(atom));
-                        } catch ( DuplicatedAtom duplicatedAtom ) {
-                            console.log('Se duplico del atomo ', duplicatedAtom);
-                        }
+                        //try {
+                            workingMemory.saveAtom(atom);
+                        //} catch ( DuplicatedAtom duplicatedAtom ) {
+                        //    console.log('Se duplico del atomo ', duplicatedAtom);
+                        //}
                     }
                 }
             });
@@ -50,45 +140,46 @@ const InferenceMachine = Backone.Model.extend({
         return null;
     },
 
-    concat: (destination, source) => {
+    concat: function(destination, source) {
         source.map(atom => {
-            let atomTemp = new Atom(atom);
             if ( atom instanceof Atom ) {
-                destination.push(atomTemp);
+                destination.push(atom);
             }
 
             if ( atom instanceof Denial ) {
-                atomTemp.set('state', !atomTemp.get('state'));
+                atom.set('state', !atom.get('state'));
             }
         });
     },
 
-    isEligible: (rule, toSatisfy) => {
+    isEligible: function(rule, toSatisfy) {
         let conclutionAtoms = [];
         let atomTemp;
+        let retorno = false;
 
         rule.get('conclutionParts').map(atom => {
-            atomTemp = new Atom(atom);
+
             if ( atom instanceof Atom ) {
-                conclutionAtoms.push(atomTemp);
+                conclutionAtoms.push(atom);
             }
 
-            if ( atomTemp instanceof Denial ) {
-                atomTemp.set('state', !atomTemp.get('state'));
+            if ( atom instanceof Denial ) {
+                atom.set('state', !atom.get('state'));
             }
         });
 
         conclutionAtoms.map(atom => {
-            if ( toSatisfy.contains(atom) ) {
-                return true;
+            if ( toSatisfy.find(a => a == atom) ) {
+                retorno = true;
             }
         });
 
-        return false;
+        return retorno;
     },
 
-    chainBack: (knowledgeModule, workingMemory) => {
-        let objetiveRules = knowledgeModule.filterObjetives();
+    chainBack: function(knowledgeModule, workingMemory) {
+        let objetiveRules = knowledgeModule.filterObjectives();
+
         let toSatisfy = [];
         let knowledgeBasePremium = [];
         let result;
@@ -102,7 +193,7 @@ const InferenceMachine = Backone.Model.extend({
         let knowledgeModuleTemp;
 
         do {
-            position = Math.floor((Math.random() * total) + 1);
+            position = Math.floor((Math.random() * total));
 
             if ( !used[position] ) {
                 times++;
@@ -111,31 +202,31 @@ const InferenceMachine = Backone.Model.extend({
                 knowledgeBasePremium = [];
                 knowledgeModule.unmark();
                 knowledgeModule.removeTriggers();
-                objetiveRules[position].conclutionParts.map(conclution => {
+                objetiveRules[position].get('conclutionParts').map(conclution => {
                     if ( conclution instanceof Atom ) {
-                        let atom = new Atom(conclution);
-                        if ( atom.get('objective') ) {
-                            knowledgeBasePremiumName = atom.get('description').toUpperCase();
+                        if ( conclution.get('objective') ) {
+                            knowledgeBasePremiumName = conclution.get('description').toUpperCase();
                         }
                     }
                 });
+
                 knowledgeModuleTemp = new KnowledgeModule(knowledgeBasePremiumName);
-                this.concat(toSatisfy, objetiveRules[position].conclutionParts);
+                this.concat(toSatisfy, objetiveRules[position].get('conclutionParts'));
                 do {
                     exit = true;
-                    knowledgeModule.knowledgeBase.map(atomRule => {
-                        if ( !atomRule.get('mark') && isEligible(atomRule, toSatisfy) ) {
+                    knowledgeModule.get('knowledgeBase').map(atomRule => {
+                        if ( !atomRule.get('mark') && this.isEligible(atomRule, toSatisfy) ) {
                             exit = false;
-                            console.log('elegida ', atomRule);
                             atomRule.set('mark', true);
-                            this.concat(toSatisfy, atomRule.conditionParts);
+                            this.concat(toSatisfy, atomRule.get('conditionParts'));
                             knowledgeBasePremium.unshift(atomRule);
                         }
                     });
                 } while ( !exit );
                 knowledgeModuleTemp.set('knowledgeBase', knowledgeBasePremium);
-                console.log('Intentando con ', knowledgeModuleTemp);
+                console.log('Intentando con ', knowledgeModuleTemp.get('description'));
 
+                let result = this.chainForward(knowledgeModuleTemp, workingMemory);
                 if ( result ) {
                     this.backward = false;
                     return result;
